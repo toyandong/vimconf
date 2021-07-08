@@ -5,18 +5,19 @@ if has("syntax")
 endif
 
 "设置配色方案，/usr/share/vim/vim72/color目录下
-colorscheme monokai_pro
+"colorscheme monokai_pro
+colorscheme molokai
 "colorscheme monokai
 "colorscheme solarized
 "colorscheme phd
 let g:solarized_termcolors=256
 "set background=dark "light or dark
-set background=light
+"set background=light
 syntax enable
 set ignorecase        	" 搜索模式里忽略大小写
 set smartcase         	" 如果搜索模式包含大写字符，不使用 'ignorecase' 选项。
 set autowrite         	" 自动把内容写回文件
-
+set backspace=indent,eol,start " backtrace失效问题
 setlocal autoindent        	" 设置自动对齐(缩进)：即每行的缩进值与上一行相等
 setlocal cinoptions=:0,l1,t0,t0,(0
 set tabstop=8        		" 设置制表符(tab键)的宽度
