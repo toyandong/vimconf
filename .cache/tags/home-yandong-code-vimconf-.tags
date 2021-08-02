@@ -1,0 +1,73 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	e-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+<F2>	/home/yandong/code/vimconf/vimrc	/^map <silent> <F2> :cclose <CR> " 关闭quickfix窗口$/;"	kind:m	line:243	language:Vim
+<F3>	/home/yandong/code/vimconf/vimrc	/^map <silent> <F3> :GscopeFind g <C-R>=expand("<cword>")<CR><CR> " 查看定义$/;"	kind:m	line:244	language:Vim
+<F4>	/home/yandong/code/vimconf/vimrc	/^map <silent> <F4> :GscopeFind s <C-R>=expand("<cword>")<CR><CR> " 查看引用$/;"	kind:m	line:245	language:Vim
+<F7>	/home/yandong/code/vimconf/vimrc	/^map <F7> ::ALEToggle<CR>$/;"	kind:m	line:190	language:Vim
+<F7>	/home/yandong/code/vimconf/vimrc	/^nmap <F7> :NERDTreeToggle<CR>$/;"	kind:m	line:254	language:Vim
+<F8>	/home/yandong/code/vimconf/vimrc	/^noremap <F8> :LeaderfFunction<CR>$/;"	kind:m	line:138	language:Vim
+<Leader>fb	/home/yandong/code/vimconf/vimrc	/^noremap <Leader>fb :LeaderfBuffer<cr>$/;"	kind:m	line:133	language:Vim
+<Leader>ff	/home/yandong/code/vimconf/vimrc	/^noremap <Leader>ff :LeaderfFunction<cr>$/;"	kind:m	line:132	language:Vim
+<Leader>fl	/home/yandong/code/vimconf/vimrc	/^noremap <Leader>fl :LeaderfLine<cr>$/;"	kind:m	line:136	language:Vim
+<Leader>fm	/home/yandong/code/vimconf/vimrc	/^noremap <Leader>fm :LeaderfMru<cr>$/;"	kind:m	line:135	language:Vim
+<Leader>ft	/home/yandong/code/vimconf/vimrc	/^noremap <Leader>ft :LeaderfTag<cr>$/;"	kind:m	line:134	language:Vim
+<c-y>	/home/yandong/code/vimconf/vimrc	/^noremap <c-y> <NOP>$/;"	kind:m	line:102	language:Vim
+g:Lf_CacheDirectory	/home/yandong/code/vimconf/vimrc	/^let g:Lf_CacheDirectory = expand('~\/.vim\/cache')$/;"	kind:v	line:144	language:Vim
+g:Lf_HideHelp	/home/yandong/code/vimconf/vimrc	/^let g:Lf_HideHelp = 1$/;"	kind:v	line:146	language:Vim
+g:Lf_NormalMap	/home/yandong/code/vimconf/vimrc	/^let g:Lf_NormalMap = {$/;"	kind:v	line:150	language:Vim
+g:Lf_PreviewResult	/home/yandong/code/vimconf/vimrc	/^let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}$/;"	kind:v	line:148	language:Vim
+g:Lf_RootMarkers	/home/yandong/code/vimconf/vimrc	/^let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']$/;"	kind:v	line:141	language:Vim
+g:Lf_ShortcutF	/home/yandong/code/vimconf/vimrc	/^let g:Lf_ShortcutF = '<c-p>'$/;"	kind:v	line:130	language:Vim
+g:Lf_ShowRelativePath	/home/yandong/code/vimconf/vimrc	/^let g:Lf_ShowRelativePath = 0$/;"	kind:v	line:145	language:Vim
+g:Lf_StlColorscheme	/home/yandong/code/vimconf/vimrc	/^let g:Lf_StlColorscheme = 'powerline'$/;"	kind:v	line:147	language:Vim
+g:Lf_StlSeparator	/home/yandong/code/vimconf/vimrc	/^let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }$/;"	kind:v	line:140	language:Vim
+g:Lf_WindowHeight	/home/yandong/code/vimconf/vimrc	/^let g:Lf_WindowHeight = 0.30$/;"	kind:v	line:143	language:Vim
+g:Lf_WorkingDirectoryMode	/home/yandong/code/vimconf/vimrc	/^let g:Lf_WorkingDirectoryMode = 'Ac'$/;"	kind:v	line:142	language:Vim
+g:Powerline_colorscheme	/home/yandong/code/vimconf/vimrc	/^let g:Powerline_colorscheme='solarized256'$/;"	kind:v	line:258	language:Vim
+g:ale_c_cppcheck_options	/home/yandong/code/vimconf/vimrc	/^let g:ale_c_cppcheck_options = ''$/;"	kind:v	line:186	language:Vim
+g:ale_c_gcc_options	/home/yandong/code/vimconf/vimrc	/^let g:ale_c_gcc_options = '-Wall -O2 -std=c99'$/;"	kind:v	line:184	language:Vim
+g:ale_completion_delay	/home/yandong/code/vimconf/vimrc	/^let g:ale_completion_delay = 500$/;"	kind:v	line:174	language:Vim
+g:ale_cpp_cppcheck_options	/home/yandong/code/vimconf/vimrc	/^let g:ale_cpp_cppcheck_options = ''$/;"	kind:v	line:187	language:Vim
+g:ale_cpp_gcc_options	/home/yandong/code/vimconf/vimrc	/^let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'$/;"	kind:v	line:185	language:Vim
+g:ale_echo_delay	/home/yandong/code/vimconf/vimrc	/^let g:ale_echo_delay = 20$/;"	kind:v	line:175	language:Vim
+g:ale_echo_msg_format	/home/yandong/code/vimconf/vimrc	/^let g:ale_echo_msg_format = '[%linter%] %code: %%s'$/;"	kind:v	line:177	language:Vim
+g:ale_enabled	/home/yandong/code/vimconf/vimrc	/^let g:ale_enabled = 1$/;"	kind:v	line:162	language:Vim
+g:ale_lint_delay	/home/yandong/code/vimconf/vimrc	/^let g:ale_lint_delay = 500$/;"	kind:v	line:176	language:Vim
+g:ale_lint_on_insert_leave	/home/yandong/code/vimconf/vimrc	/^let g:ale_lint_on_insert_leave = 1$/;"	kind:v	line:179	language:Vim
+g:ale_lint_on_text_changed	/home/yandong/code/vimconf/vimrc	/^let g:ale_lint_on_text_changed = 'normal'$/;"	kind:v	line:178	language:Vim
+g:ale_linters	/home/yandong/code/vimconf/vimrc	/^let g:ale_linters = {$/;"	kind:v	line:164	language:Vim
+g:ale_linters_explicit	/home/yandong/code/vimconf/vimrc	/^let g:ale_linters_explicit = 1$/;"	kind:v	line:163	language:Vim
+g:ale_sign_column_always	/home/yandong/code/vimconf/vimrc	/^let g:ale_sign_column_always = 1$/;"	kind:v	line:173	language:Vim
+g:ale_sign_error	/home/yandong/code/vimconf/vimrc	/^let g:ale_sign_error = ">>"$/;"	kind:v	line:188	language:Vim
+g:ale_sign_warning	/home/yandong/code/vimconf/vimrc	/^let g:ale_sign_warning = "--"$/;"	kind:v	line:189	language:Vim
+g:ctags_version	/home/yandong/code/vimconf/vimrc	/^let g:ctags_version = system('ctags --version')[0:8]$/;"	kind:v	line:231	language:Vim
+g:gutentags_auto_add_gtags_cscope	/home/yandong/code/vimconf/vimrc	/^let g:gutentags_auto_add_gtags_cscope = 1$/;"	kind:v	line:239	language:Vim
+g:gutentags_cache_dir	/home/yandong/code/vimconf/vimrc	/^let g:gutentags_cache_dir = s:vim_tags$/;"	kind:v	line:219	language:Vim
+g:gutentags_ctags_extra_args	/home/yandong/code/vimconf/vimrc	/^  let g:gutentags_ctags_extra_args += ['--extras=+q', '--output-format=e-ctags']$/;"	kind:v	line:235	language:Vim
+g:gutentags_ctags_extra_args	/home/yandong/code/vimconf/vimrc	/^let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']$/;"	kind:v	line:227	language:Vim
+g:gutentags_ctags_extra_args	/home/yandong/code/vimconf/vimrc	/^let g:gutentags_ctags_extra_args += ['--c-kinds=+px']$/;"	kind:v	line:228	language:Vim
+g:gutentags_ctags_extra_args	/home/yandong/code/vimconf/vimrc	/^let g:gutentags_ctags_extra_args = ['--fields=+niazSl']$/;"	kind:v	line:226	language:Vim
+g:gutentags_ctags_tagfile	/home/yandong/code/vimconf/vimrc	/^let g:gutentags_ctags_tagfile = '.tags'$/;"	kind:v	line:206	language:Vim
+g:gutentags_modules	/home/yandong/code/vimconf/vimrc	/^    let g:gutentags_modules += ['ctags']$/;"	kind:v	line:211	language:Vim
+g:gutentags_modules	/home/yandong/code/vimconf/vimrc	/^    let g:gutentags_modules += ['gtags_cscope']$/;"	kind:v	line:214	language:Vim
+g:gutentags_modules	/home/yandong/code/vimconf/vimrc	/^let g:gutentags_modules = []$/;"	kind:v	line:209	language:Vim
+g:gutentags_project_root	/home/yandong/code/vimconf/vimrc	/^let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']$/;"	kind:v	line:204	language:Vim
+g:solarized_termcolors	/home/yandong/code/vimconf/vimrc	/^let g:solarized_termcolors=256$/;"	kind:v	line:13	language:Vim
+g:ycm_add_preview_to_completeopt	/home/yandong/code/vimconf/vimrc	/^let g:ycm_add_preview_to_completeopt = 0$/;"	kind:v	line:93	language:Vim
+g:ycm_collect_identifiers_from_comments_and_strings	/home/yandong/code/vimconf/vimrc	/^let g:ycm_collect_identifiers_from_comments_and_strings = 1$/;"	kind:v	line:97	language:Vim
+g:ycm_complete_in_strings	/home/yandong/code/vimconf/vimrc	/^let g:ycm_complete_in_strings=1$/;"	kind:v	line:98	language:Vim
+g:ycm_filetype_blacklist	/home/yandong/code/vimconf/vimrc	/^let g:ycm_filetype_blacklist = {$/;"	kind:v	line:121	language:Vim
+g:ycm_filetype_whitelist	/home/yandong/code/vimconf/vimrc	/^let g:ycm_filetype_whitelist = {$/;"	kind:v	line:112	language:Vim
+g:ycm_global_ycm_extra_conf	/home/yandong/code/vimconf/vimrc	/^let g:ycm_global_ycm_extra_conf= '~\/.vim\/config\/ycm_extra_conf.py'$/;"	kind:v	line:92	language:Vim
+g:ycm_key_invoke_completion	/home/yandong/code/vimconf/vimrc	/^let g:ycm_key_invoke_completion = '<c-y>'$/;"	kind:v	line:99	language:Vim
+g:ycm_min_num_identifier_candidate_chars	/home/yandong/code/vimconf/vimrc	/^let g:ycm_min_num_identifier_candidate_chars = 2$/;"	kind:v	line:96	language:Vim
+g:ycm_semantic_triggers	/home/yandong/code/vimconf/vimrc	/^let g:ycm_semantic_triggers =  {$/;"	kind:v	line:107	language:Vim
+g:ycm_server_log_level	/home/yandong/code/vimconf/vimrc	/^let g:ycm_server_log_level = 'info'$/;"	kind:v	line:95	language:Vim
+g:ycm_show_diagnostics_ui	/home/yandong/code/vimconf/vimrc	/^let g:ycm_show_diagnostics_ui = 0$/;"	kind:v	line:94	language:Vim
+s:vim_tags	/home/yandong/code/vimconf/vimrc	/^let s:vim_tags = expand('.\/.cache\/tags')$/;"	kind:v	line:218	language:Vim
+vimconf	/home/yandong/code/vimconf/README.md	/^# vimconf$/;"	kind:c	line:1	language:Markdown

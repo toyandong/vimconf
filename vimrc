@@ -5,12 +5,13 @@ if has("syntax")
 endif
 
 "设置配色方案，/usr/share/vim/vim72/color目录下
-"colorscheme monokai_pro
-colorscheme molokai
+set termguicolors
+colorscheme monokai_pro
+"colorscheme molokai
 "colorscheme monokai
 "colorscheme solarized
 "colorscheme phd
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 "set background=dark "light or dark
 "set background=light
 syntax enable
@@ -52,90 +53,202 @@ set hlsearch
 set list
 set listchars=tab:>-,trail:-,extends:#,nbsp:-
 set cc=80
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
-if has("autocmd")
-	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" 上一次打开的位置
+autocmd BufReadPost * normal! g`"
+
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'Lokaltog/vim-powerline'
+
+" 语法检查
+Plug 'w0rp/ale'
+" 代码补全
+Plug 'Valloric/YouCompleteMe', {'do':'git submodule update --init --recursive && ./install.py --clang-completer --go-completer'}
+
+"函数参数提示
+Plug 'Shougo/echodoc.vim'
+
+" 自动后台更新ctags
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
+Plug  'aceofall/gtags.vim'
+"搜索栏预览
+Plug 'skywind3000/vim-preview'
+" 强化具体语言文件
+Plug 'vim-scripts/c.vim'
+Plug 'vim-scripts/a.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'fatih/vim-go'
+Plug 'elzr/vim-json'
+
+" 代码染色配置插件
+Plug 'altercation/vim-colors-solarized'
+Plug 'crusoexia/vim-monokai'
+Plug 'tomasr/molokai'
+Plug 'phanviet/vim-monokai-pro'
+"模糊查找leaderf
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+
+call plug#end()
+
+" YCM代码补全
+let g:ycm_global_ycm_extra_conf= '~/.vim/config/ycm_extra_conf.py'
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_server_log_level = 'info'
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_complete_in_strings=1
+let g:ycm_key_invoke_completion = '<c-y>'
+set completeopt=menu,menuone
+" 使用 Ctrl+y 主动触发语义补全
+noremap <c-y> <NOP>
+" 修改补全列表配色
+highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
+highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
+
+let g:ycm_semantic_triggers =  {
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+            \ 'cs,lua,javascript': ['re!\w{2}'],
+            \ }
+
+let g:ycm_filetype_whitelist = {
+            \ "c":1,
+            \ "cpp":1,
+            \ "go":1,
+            \ "python":1,
+            \ "sh":1,
+            \ "zsh":1,
+            \ }
+
+let g:ycm_filetype_blacklist = {
+        \ 'markdown' : 1,
+        \ 'text' : 1,
+        \ 'pandoc' : 1,
+        \ 'infolog' : 1,
+        \}
+
+" -----------LeaderF 模糊文件查找-------------------------------
+" Ctrl + p 打开文件搜索
+let g:Lf_ShortcutF = '<c-p>'
+" default <Leader> is \
+noremap <Leader>ff :LeaderfFunction<cr>
+noremap <Leader>fb :LeaderfBuffer<cr>
+noremap <Leader>ft :LeaderfTag<cr>
+noremap <Leader>fm :LeaderfMru<cr>
+noremap <Leader>fl :LeaderfLine<cr>
+
+noremap <F8> :LeaderfFunction<CR>
+
+let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_WindowHeight = 0.30
+let g:Lf_CacheDirectory = expand('~/.vim/cache')
+let g:Lf_ShowRelativePath = 0
+let g:Lf_HideHelp = 1
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+
+let g:Lf_NormalMap = {
+    \ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
+    \ "Buffer": [["<ESC>", ':exec g:Lf_py "bufExplManager.quit()"<CR>']],
+    \ "Mru":    [["<ESC>", ':exec g:Lf_py "mruExplManager.quit()"<CR>']],
+    \ "Tag":    [["<ESC>", ':exec g:Lf_py "tagExplManager.quit()"<CR>']],
+    \ "Function":    [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<CR>']],
+    \ "Colorscheme":    [["<ESC>", ':exec g:Lf_py "colorschemeExplManager.quit()"<CR>']],
+    \ }
+
+"-----------ale 静态检查插件-----------------------------------------------
+" 对应语言需要安装相应的检查工具
+" apt install shellcheck  cppcheck
+let g:ale_enabled = 1
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+  \   'bash': ['shellcheck'],
+  \   'go': ['gofmt', 'golint'],
+  \   'python': ['pylint'],
+  \   'c': ['gcc', 'cppcheck'],
+  \   'cpp': ['gcc', 'cppcheck'],
+  \   'text': [],
+  \}
+
+let g:ale_sign_column_always = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+
+"let g:ale_set_quickfix = 1
+"let g:ale_open_list = 1"打开quitfix对话框
+
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
+let g:ale_sign_error = ">>"
+let g:ale_sign_warning = "--"
+map <F7> ::ALEToggle<CR>
+
+"""""""""""""vim-gutentags"""""""""""""""""""
+" sudo apt-get install universal-ctags
+" sudo apt-get install global
+" 安装依赖
+" sudo apt build-dep global
+" sudo apt install libncurses5-dev libncursesw5-dev
+""设置标签tags
+set tags=./.tags;,.tags
+"设置根据打开文件自动更换目录
+"set autochdir
+
+" gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 同时开启 ctags 和 gtags 支持：
+let g:gutentags_modules = []
+let g:gutentags_modules += ['gtags_cscope']
+
+" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('./.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+" 检测 ~/.cache/tags 不存在就新建 "
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
 endif
-" 随 vim 自启动
-let g:indent_guides_enable_on_vim_startup=1
-" " 从第二层开始可视化显示缩进
-let g:indent_guides_start_level=2
-" " 色块宽度
-let g:indent_guides_guide_size=1
-" " 快捷键 i 开/关缩进可视化
-nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
-"""""""""""""vundle设置"""""""""""""""""""
-set nocompatible              " be iMproved
-filetype off                  " required!
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-" 可以通过以下四种方式指定插件的来源
-" a) 指定Github中vim-scripts仓库中的插件，直接指定插件名称即可，插件明中的空格使用“-”代替。
-Bundle 'L9'
-:" b) 指定Github中其他用户仓库的插件，使用“用户名/插件名称”的方式指定
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tomasr/molokai'
-Plugin 'vim-scripts/phd'
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-powerline'
-"Bundle 'winmanager'
-Bundle 'tagbar'
-" c) 指定非Github的Git仓库的插件，需要使用git地址
-"Bundle 'git://git.wincent.com/command-t.git'
-filetype plugin indent on     " required!
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazSl']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
-":PluginInstall
-"vim +PluginInstall +qall
+" Get ctags version
+let g:ctags_version = system('ctags --version')[0:8]
 
-"""""""""""""插件设置"""""""""""""""""""
-"taglist
-"cscope
-"NERDTree
+" 如果使用 universal ctags 需要增加下面一行
+let g:gutentags_ctags_extra_args += ['--extras=+q', '--output-format=e-ctags']
 
-"""""""""""""cscope"""""""""""""""""""
-"cscope -Rbq
-"cscope
-cs add cscope.out
-"set cscopequickfix=s-,c-,d-,i-,t-,e-
-map <silent> <F2> :cs find g <C-R>=expand("<cword>")<CR><CR>
-map <silent> <F3> :cs find c <C-R>=expand("<cword>")<CR><CR>
-map <silent> <F4> :cs find s <C-R>=expand("<cword>")<CR><CR>
-map <silent> <F5> :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-c>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-c>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+" 禁用 gutentags 自动加载 gtags 数据库的行为
+let g:gutentags_auto_add_gtags_cscope = 1
+"Change focus to quickfix window after search (optional).
+"let g:gutentags_plus_switch = 1
 
+map <silent> <F2> :cclose <CR> " 关闭quickfix窗口
+map <silent> <F3> :GscopeFind g <C-R>=expand("<cword>")<CR><CR> " 查看定义
+map <silent> <F4> :GscopeFind s <C-R>=expand("<cword>")<CR><CR> " 查看引用
+
+"----------vim-preview配置-----------------------------------------
+"P 预览 大p关闭
+autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
+autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
 
 """""""""""""NERDTree"""""""""""""""""""
 "NERDTree - file navigation
-nmap <F10> :NERDTreeToggle<CR>
-
-"""""""""""""Taglist"""""""""""""""""""
-"Taglist - source code browser
-"ctags --extra=+q  --fields=+niazS --c-kinds=+px .
-"map <silent> <F9> :TlistToggle<CR>
-"let Tlist_Use_Right_Window = 1 "让taglist窗口出现在Vim的右边
-"let Tlist_GainFocus_On_ToggleOpen = 1 "Taglist窗口打开时，立刻切换为有焦点状态
-"let Tlist_Exit_OnlyWindow = 1 "如果taglist窗口是最后一个窗口，则退出vim
-
-
-"""""""""""""Tagbar"""""""""""""""""""
-nmap <F9> :TagbarToggle<CR>
-let g:tagbar_ctags_bin = 'ctags' "tagbar以来ctags插件
-"let g:tagbar_left = 1 "让tagbar在页面左侧显示，默认右边
-let g:tagbar_width = 28  "设置tagbar的宽度为30列，默认40
-let g:tagbar_autofocus = 1 "这是tagbar一打开，光标即在tagbar页面内，默认在vim打开的文件内
-let g:tagbar_sort = 0 "设置标签不排序，默认排序
-
+nmap <F7> :NERDTreeToggle<CR>
 
 """""""""""""Powerline"""""""""""""""""""
 " 设置状态栏主题风格
